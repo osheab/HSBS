@@ -5,8 +5,7 @@
   "main": "iha.js",
   "scripts": {
     "start": "node iha.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run-script"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
