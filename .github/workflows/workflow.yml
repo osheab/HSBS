@@ -29,4 +29,6 @@ jobs:
             azure-file-volume-account-name: storemystuff21455
             azure-file-volume-mount-path: /a/b/
             azure-file-volume-share-name: myshare
-            
+            registry-username: roehampton
+            registry-password: nK3E5L55/T0XMhIMsEC6VpdQbOdXoYmb
+            registry-login-server: roehampton.azurecr.io
