@@ -1,0 +1,32 @@
+
+on: [push]
+name: Linux_Container_Workflow
+
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        steps:
+        # checkout the repo
+        - name: 'Checkout GitHub Action'
+          uses: actions/checkout@master
+          
+        - name: 'Login via Azure CLI'
+          uses: azure/login@v1
+          with:
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+
+        - name: 'Deploy to Azure Container Instances'
+          uses: 'azure/aci-deploy@v1'
+          with:
+            resource-group: project
+            dns-name-label: thishastowork
+            ports: 3000
+            name:thisshouldwork
+            image: roehampton.azurecr.io/hsbs:v1
+            azure-file-volume-account-key: sr+zgEpEV8XkSz4zByD/8YX9ypZYLWLv4/K6MGd2lO5L44ubPgMWsV46WJpepnLJIzS6blW/3+ScC+Xla1eZrQ==
+            azure-file-volume-account-name: storemystuff21455
+            azure-file-volume-mount-path: /a/b/
+            azure-file-volume-share-name: myshare
+            azure-file-volume-read-only: false
+            
