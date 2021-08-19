@@ -15,6 +15,14 @@ jobs:
           with:
             creds: ${{ secrets.AZURE_CREDENTIALS }}
         
+        - uses: azure/docker-login@v1
+          with:
+            login-server: roehampton.azurecr.io
+            username: roehampton
+            password: ${{ secrets.REGISTRY_PASSWORD }}
+        - run: |
+            docker build . -t roehampton.azurecr.io/hsbs:${{ github.sha }}
+            docker push roehampton.azurecr.io/hsbs:${{ github.sha }}
 
         - name: 'Deploy to Azure Container Instances'
           uses: 'azure/aci-deploy@v1'
@@ -23,8 +31,8 @@ jobs:
             dns-name-label: planetdoctor
             ports: 3000
             name: planetdoctor
-            image: roehampton.azurecr.io/hsbs:v1
+            image: roehampton.azurecr.io/hsbs:${{ github.sha }}
             location: uksouth
             registry-username: roehampton
-            registry-password: ZoE/S5g0MQ4eUBtTUnmBwFCVJmBD/k8R
+            registry-password: ${{ secrets.REGISTRY_PASSWORD }}
             registry-login-server: roehampton.azurecr.io
