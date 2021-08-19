@@ -20,7 +20,7 @@ jobs:
           uses: 'azure/aci-deploy@v1'
           with:
             resource-group: project
-            dns-name-label: HSBS
+            dns-name-label: planetdoctor
             ports: 3000
             name: planetdoctor
             image: roehampton.azurecr.io/hsbs:v1
