@@ -1,6 +1,8 @@
 
 on: [push]
-name: Linux_Container_Workflow
+  branches: [main]
+  
+name: Linux Container Workflow
 
 jobs:
     build-and-deploy:
