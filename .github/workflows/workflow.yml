@@ -1,5 +1,6 @@
 
 on: [push]
+  branches: [main]
 name: Linux_Container_Workflow
 
 jobs:
